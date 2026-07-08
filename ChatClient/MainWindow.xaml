@@ -1,0 +1,51 @@
+﻿<Window x:Class="ChatClient.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="SignalR Chat Client" Height="450" Width="600">
+    <Grid>
+        <!-- Панель авторизации -->
+        <StackPanel x:Name="AuthPanel" Width="250" VerticalAlignment="Center">
+            <TextBlock Text="Логин:" />
+            <TextBox x:Name="UsernameBox" Margin="0,0,0,10" />
+            <TextBlock Text="Пароль:" />
+            <PasswordBox x:Name="PasswordBox" Margin="0,0,0,10" />
+            <Button Content="Войти" Click="Login_Click" Margin="0,0,0,5" />
+            <Button Content="Регистрация" Click="Register_Click" />
+            <TextBlock x:Name="AuthStatusText" Foreground="Red" TextWrapping="Wrap" Margin="0,10,0,0"/>
+        </StackPanel>
+
+        <!-- Панель чата -->
+        <Grid x:Name="ChatPanel" Visibility="Collapsed" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <ListBox x:Name="MessagesList" Grid.Row="0" Margin="0,0,0,10" />
+
+            <Grid Grid.Row="1" Margin="0,0,0,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="ID получателя (оставить пустым для общего чата): " VerticalAlignment="Center"/>
+                <TextBox x:Name="ReceiverIdBox" Grid.Column="1" />
+            </Grid>
+
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0" Text="Текст сообщения:" VerticalAlignment="Center" Margin="0,0,5,0" />
+                <TextBox x:Name="MessageBox" Grid.Column="1" Margin="0,0,10,0" VerticalAlignment="Center" Height="22" />
+                <Button Grid.Column="2" Content="Отправить" Click="Send_Click" Width="80" Margin="0,0,10,0" />
+                <Button Grid.Column="3" Content="Удалить выбранное" Click="Delete_Click" Width="120" />
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
